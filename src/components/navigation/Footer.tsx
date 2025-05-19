@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 
 const Footer = () => {
@@ -7,7 +6,7 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="col-span-1">
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">Career Compass</h3>
+            <h3 className="text-lg font-semibold text-gray-900 mb-4">MentorAX</h3>
             <p className="text-gray-600 text-sm">
               Guiding students and freshers towards the best-suited career paths based on their interests, skills, and academic background.
             </p>
@@ -51,7 +50,7 @@ const Footer = () => {
           
           <div className="col-span-1">
             <h3 className="text-gray-900 font-medium mb-4">Contact</h3>
-            <p className="text-gray-600 text-sm mb-2">Email: info@careercompass.com</p>
+            <p className="text-gray-600 text-sm mb-2">Email: info@mentorax.com</p>
             <p className="text-gray-600 text-sm mb-4">Phone: +1 (123) 456-7890</p>
             <div className="flex space-x-4">
               <a href="#" className="text-gray-400 hover:text-primary-blue">
@@ -78,7 +77,7 @@ const Footer = () => {
         
         <div className="mt-8 border-t border-gray-200 pt-8">
           <p className="text-center text-gray-500 text-sm">
-            &copy; {new Date().getFullYear()} Career Compass. All rights reserved.
+            &copy; {new Date().getFullYear()} MentorAX. All rights reserved.
           </p>
         </div>
       </div>

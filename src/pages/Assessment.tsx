@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
@@ -213,14 +212,16 @@ const Assessment = () => {
             <div className="bg-white shadow rounded-lg overflow-hidden">
               <div className="px-6 py-8">
                 <div className="flex items-center justify-between mb-6">
-                  <h2 className="text-2xl font-bold text-gray-900">Career Assessment Quiz</h2>
+                  <h2 className="text-2xl font-bold text-gray-900">MentorAX Assessment Quiz</h2>
                   <span className="text-sm font-medium text-gray-500">
                     Question {currentQuestion + 1} of {questions.length}
                   </span>
                 </div>
                 
+                {/* Progress Bar */}
                 <Progress value={progressPercentage} className="mb-8" />
                 
+                {/* Question */}
                 <div className="mb-8">
                   <h3 className="text-xl font-medium text-gray-900 mb-4">
                     {questions[currentQuestion].text}
@@ -255,6 +256,7 @@ const Assessment = () => {
                   </RadioGroup>
                 </div>
                 
+                {/* Navigation */}
                 <div className="flex justify-between">
                   <Button
                     variant="outline"
@@ -292,6 +294,7 @@ const Assessment = () => {
           </>
         ) : (
           <div className="bg-white shadow rounded-lg overflow-hidden animate-fade-in">
+            {/* Assessment Completion */}
             <div className="px-6 py-8">
               <div className="text-center mb-8">
                 <div className="inline-flex items-center justify-center h-16 w-16 rounded-full bg-green-100 text-green-600 mb-4">
