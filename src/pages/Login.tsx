@@ -5,6 +5,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useAuth } from "@/contexts/AuthContext";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { InfoCircle } from "lucide-react";
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -15,7 +17,7 @@ const Login = () => {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isLoading, setIsLoading] = useState(false);
   
-  const { signIn, user } = useAuth();
+  const { signIn, user, isEmailVerificationPending } = useAuth();
   const navigate = useNavigate();
   
   // Redirect if user is already logged in
@@ -91,6 +93,16 @@ const Login = () => {
 
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
         <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
+          {isEmailVerificationPending && (
+            <Alert variant="warning" className="mb-6">
+              <InfoCircle className="h-4 w-4" />
+              <AlertTitle>Email verification required</AlertTitle>
+              <AlertDescription>
+                Please check your email inbox and click the verification link before signing in.
+              </AlertDescription>
+            </Alert>
+          )}
+          
           <form className="space-y-6" onSubmit={handleSubmit}>
             <div>
               <Label htmlFor="email">Email address</Label>

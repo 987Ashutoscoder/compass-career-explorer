@@ -9,6 +9,7 @@ type AuthContextType = {
   user: User | null;
   profile: any | null;
   loading: boolean;
+  isEmailVerificationPending: boolean;
   signIn: (email: string, password: string) => Promise<void>;
   signUp: (email: string, password: string, fullName: string) => Promise<void>;
   signOut: () => Promise<void>;
@@ -21,14 +22,21 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [profile, setProfile] = useState<any | null>(null);
   const [loading, setLoading] = useState(true);
+  const [isEmailVerificationPending, setIsEmailVerificationPending] = useState(false);
   const { toast } = useToast();
 
   useEffect(() => {
     // Set up the auth state listener
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
       (event, currentSession) => {
+        console.log("Auth event:", event);
         setSession(currentSession);
         setUser(currentSession?.user ?? null);
+        
+        // Reset email verification state on auth events
+        if (event === "SIGNED_OUT") {
+          setIsEmailVerificationPending(false);
+        }
 
         // Fetch user profile in a separate execution context
         if (currentSession?.user) {
@@ -80,6 +88,20 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       const { error } = await supabase.auth.signInWithPassword({ email, password });
       
       if (error) {
+        if (error.message.includes("Email not confirmed")) {
+          setIsEmailVerificationPending(true);
+          toast({
+            title: "Email verification required",
+            description: "Please check your email for verification link before signing in.",
+            variant: "destructive",
+          });
+        } else {
+          toast({
+            title: "Sign in failed",
+            description: error.message || "An error occurred during sign in.",
+            variant: "destructive",
+          });
+        }
         throw error;
       }
       
@@ -88,18 +110,14 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         description: "You've successfully signed in.",
       });
     } catch (error: any) {
-      toast({
-        title: "Sign in failed",
-        description: error.message || "An error occurred during sign in.",
-        variant: "destructive",
-      });
+      // Error already handled above
       throw error;
     }
   };
 
   const signUp = async (email: string, password: string, fullName: string) => {
     try {
-      const { error } = await supabase.auth.signUp({ 
+      const { error, data } = await supabase.auth.signUp({ 
         email, 
         password,
         options: {
@@ -110,19 +128,29 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       });
       
       if (error) {
+        toast({
+          title: "Registration failed",
+          description: error.message || "An error occurred during registration.",
+          variant: "destructive",
+        });
         throw error;
       }
-      
-      toast({
-        title: "Registration successful!",
-        description: "Welcome to MentorAX! Please check your email for verification.",
-      });
+
+      // Check if email confirmation is required
+      if (data?.user && !data.user.confirmed_at) {
+        setIsEmailVerificationPending(true);
+        toast({
+          title: "Registration successful!",
+          description: "Please check your email for verification link before signing in.",
+        });
+      } else {
+        toast({
+          title: "Registration successful!",
+          description: "Welcome to MentorAX!",
+        });
+      }
     } catch (error: any) {
-      toast({
-        title: "Registration failed",
-        description: error.message || "An error occurred during registration.",
-        variant: "destructive",
-      });
+      // Error already handled above
       throw error;
     }
   };
@@ -148,6 +176,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     user,
     profile,
     loading,
+    isEmailVerificationPending,
     signIn,
     signUp,
     signOut,
