@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -6,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useAuth } from "@/contexts/AuthContext";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { InfoCircle } from "lucide-react";
+import { AlertCircle } from "lucide-react";
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -107,7 +106,7 @@ const Register = () => {
         <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
           {isEmailVerificationPending && (
             <Alert className="mb-6">
-              <InfoCircle className="h-4 w-4" />
+              <AlertCircle className="h-4 w-4" />
               <AlertTitle>Email verification required</AlertTitle>
               <AlertDescription>
                 Please check your email inbox and click the verification link before signing in.
