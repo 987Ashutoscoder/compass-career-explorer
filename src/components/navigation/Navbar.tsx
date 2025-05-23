@@ -46,6 +46,7 @@ const Navbar = () => {
             <Link to="/assessment" className="text-gray-700 hover:text-primary-blue px-3 py-2 rounded-md text-sm font-medium">Assessment</Link>
             <Link to="/careers" className="text-gray-700 hover:text-primary-blue px-3 py-2 rounded-md text-sm font-medium">Explore Careers</Link>
             <Link to="/resources" className="text-gray-700 hover:text-primary-blue px-3 py-2 rounded-md text-sm font-medium">Resources</Link>
+            <Link to="/documentation" className="text-gray-700 hover:text-primary-blue px-3 py-2 rounded-md text-sm font-medium">Documentation</Link>
             
             {user ? (
               <DropdownMenu>
@@ -135,6 +136,13 @@ const Navbar = () => {
               onClick={() => setIsMenuOpen(false)}
             >
               Resources
+            </Link>
+            <Link 
+              to="/documentation" 
+              className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-primary-blue"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Documentation
             </Link>
             
             {user ? (

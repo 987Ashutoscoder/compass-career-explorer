@@ -16,6 +16,7 @@ import Register from "./pages/Register";
 import NotFound from "./pages/NotFound";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import ProfilePage from "./pages/Profile";
+import Documentation from "./pages/Documentation";
 
 const queryClient = new QueryClient();
 
@@ -36,6 +37,7 @@ const App = () => (
             <Route path="/careers" element={<Layout><Careers /></Layout>} />
             <Route path="/career/:id" element={<Layout><CareerDetail /></Layout>} />
             <Route path="/resources" element={<Layout><Resources /></Layout>} />
+            <Route path="/documentation" element={<Layout><Documentation /></Layout>} />
             <Route path="/profile" element={
               <ProtectedRoute>
                 <Layout><ProfilePage /></Layout>
