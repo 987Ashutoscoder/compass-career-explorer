@@ -739,27 +739,27 @@ interface ProductListProps {
 const ProductList = ({ products, onProductClick }: ProductListProps) => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-      {products.map((product) => (
+      {products.map((productItem) => (
         <div 
-          key={product.id}
+          key={productItem.id}
           className="border rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow"
-          onClick={() => onProductClick(product.id)}
+          onClick={() => onProductClick(productItem.id)}
         >
           <div className="aspect-w-4 aspect-h-3">
             <img 
-              src={product.imageUrls[0]} 
-              alt={product.name}
+              src={productItem.imageUrls[0]} 
+              alt={productItem.name}
               className="w-full h-full object-cover" 
             />
           </div>
           <div className="p-4">
-            <h3 className="font-medium text-lg">{product.name}</h3>
+            <h3 className="font-medium text-lg">{productItem.name}</h3>
             <p className="text-gray-500 mb-2">
-              ${product.price.toFixed(2)}
+              ${productItem.price.toFixed(2)}
             </p>
             <p className="text-sm text-gray-700">
-              {product.description.substring(0, 100)}
-              {product.description.length > 100 ? '...' : ''}
+              {productItem.description.substring(0, 100)}
+              {productItem.description.length > 100 ? '...' : ''}
             </p>
           </div>
         </div>
@@ -914,3 +914,4 @@ export default ProductList;`}
 };
 
 export default Documentation;
+
