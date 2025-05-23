@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { 
   Tabs, 
@@ -355,7 +354,6 @@ const Documentation = () => {
                     </p>
                   </section>
                   
-                  {/* Add more sections for methodology... */}
                   <section id="systemdesign" className="mb-8">
                     <h3 className="text-xl font-semibold mb-4">4.2 SYSTEM DESIGN</h3>
                     <p className="mb-4 text-gray-700">
@@ -424,7 +422,6 @@ const Documentation = () => {
                     </p>
                   </section>
                   
-                  {/* More methodology sections here... */}
                   <section id="testing" className="mb-8">
                     <h3 className="text-xl font-semibold mb-4">4.5 TESTING AND QUALITY ASSURANCE</h3>
                     <p className="mb-4 text-gray-700">
@@ -494,7 +491,6 @@ const Documentation = () => {
                 </div>
               </TabsContent>
               
-              {/* Implement remaining tabs with similar structure */}
               <TabsContent value="design" className="mt-0">
                 <div className="bg-white p-6 rounded-lg shadow-sm">
                   <h2 className="text-2xl font-bold mb-6">CHAPTER 5: SYSTEM DESIGN</h2>
@@ -505,7 +501,6 @@ const Documentation = () => {
                       The database schema was designed with normalization principles and optimal query performance in mind:
                     </p>
                     
-                    {/* Add database model visualizations or descriptions */}
                     <div className="bg-slate-50 p-4 rounded-md mb-4">
                       <h4 className="font-medium mb-2">Core Entities</h4>
                       <ul className="list-disc list-inside text-gray-700">
@@ -660,7 +655,6 @@ const Documentation = () => {
                 </div>
               </TabsContent>
 
-              {/* Add more tabs for code, results, etc. following the same pattern */}
               <TabsContent value="code" className="mt-0">
                 <div className="bg-white p-6 rounded-lg shadow-sm">
                   <h2 className="text-2xl font-bold mb-6">CHAPTER 6: CODES</h2>
@@ -773,7 +767,6 @@ export default ProductList;`}
                     </div>
                   </section>
                   
-                  {/* Additional code sections... simplified for brevity */}
                   <section id="admin" className="mb-8">
                     <h3 className="text-xl font-semibold mb-4">6.3 ADMIN CUSTOMIZATION</h3>
                     <p className="text-gray-700 mb-4">
@@ -849,7 +842,6 @@ export default ProductList;`}
                     </p>
                   </section>
                   
-                  {/* Additional results sections */}
                   <section id="shop" className="mb-8">
                     <h3 className="text-xl font-semibold mb-4">7.2 SHOP SECTION</h3>
                     <p className="mb-4 text-gray-700">
@@ -914,4 +906,3 @@ export default ProductList;`}
 };
 
 export default Documentation;
-
