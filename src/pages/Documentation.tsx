@@ -733,27 +733,27 @@ interface ProductListProps {
 const ProductList = ({ products, onProductClick }: ProductListProps) => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-      {products.map((productItem) => (
+      {products.map((product) => (
         <div 
-          key={productItem.id}
+          key={product.id}
           className="border rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow"
-          onClick={() => onProductClick(productItem.id)}
+          onClick={() => onProductClick(product.id)}
         >
           <div className="aspect-w-4 aspect-h-3">
             <img 
-              src={productItem.imageUrls[0]} 
-              alt={productItem.name}
+              src={product.imageUrls[0]} 
+              alt={product.name}
               className="w-full h-full object-cover" 
             />
           </div>
           <div className="p-4">
-            <h3 className="font-medium text-lg">{productItem.name}</h3>
+            <h3 className="font-medium text-lg">{product.name}</h3>
             <p className="text-gray-500 mb-2">
-              ${productItem.price.toFixed(2)}
+              \${product.price.toFixed(2)}
             </p>
             <p className="text-sm text-gray-700">
-              {productItem.description.substring(0, 100)}
-              {productItem.description.length > 100 ? '...' : ''}
+              {product.description.substring(0, 100)}
+              {product.description.length > 100 ? '...' : ''}
             </p>
           </div>
         </div>
